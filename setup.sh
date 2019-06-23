@@ -20,11 +20,11 @@ setup_ruby() {
     then
         echo "ruby 2.5.1 is already installed"
         rvm use 2.5.1
-        rvm gemset use ${project_name} --create
+        rvm gemset use appium-io --create
     else
         source $HOME/.rvm/scripts/rvm
         rvm install 2.5.1
-        rvm gemset use ${project_name} --create
+        rvm gemset use appium-io --create
         gem install bundler
         bundle install
     fi
@@ -44,21 +44,21 @@ setup() {
 while :
 do
     case "$1" in
-        setup_python)
+        python)
             setup_python
-            exit 0
+            break
             ;;
-        setup_ruby)
+        ruby)
             setup_ruby
-            exit 0
+            break
             ;;
-        setup_node)
+        node)
             setup_node
-            exit 0
+            break
             ;;
         *)
             setup
-            exit 0
+            break
             ;;
     esac
 done
